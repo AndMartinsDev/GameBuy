@@ -1,5 +1,6 @@
 <?php
-	include './functions.php';
+	include ('./functions.php');
+	include ('page.php');
 
 	$nome = $_SESSION['nome'];
 	$image = $_SESSION['file'];
@@ -41,7 +42,7 @@
 					pesquisa();
 
 					if(isset($_SESSION['nome'])){
-						cad_log($file);
+						cad_log($image);
 						usuario($nome);
 					}else{
 						cad_log(1);
@@ -62,7 +63,9 @@
 		<!--conteudo-->
 		<div class="wrapcontent">
 			<div class="linha">
-
+				<fieldset>
+					<p><a href="index.php">Compra feita com sucesso</a></p>
+				</fieldset>
 			</div>
 		</div>
 

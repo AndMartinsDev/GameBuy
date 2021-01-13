@@ -1,19 +1,14 @@
 <?php
-	$teste = (int)2;
-	//$id = $_SESSION['id'];
-	/*session_start();
-	session_unset($_SESSION['shopCar']);
-	session_unset($_SESSION[$teste]);
-	session_unset($_SESSION[$id]);*/
-
-	$teste = (int)2;
-	foreach ($_SESSION['shopCar'] as $key => $value) {
-		echo "<br>Key = ".$key;
-		foreach ($value as $key => $value) {
-			echo "<br>Key = ".$key;
-			foreach ($value as $key => $value) {
-				echo "<br>Key = ".$key.", value = ".$value;
-			}
+	session_start();
+	//unset($_SESSION['carrinho']);
+	echo $_SESSION['carrinho']['1']['1']['Quantidade'];
+	foreach ($_SESSION['carrinho'] as $key => $value) {
+		echo "<br>Key1 = ".$key;
+		foreach ($value as $key2 => $value2) {
+			echo "<br>Key2 = ".$key2;
+			print_r($value2);
+			echo "<br>teste<br>";
+			echo $value2['nome'];
 		}
 	}
 ?>

@@ -253,6 +253,78 @@
 		";
 	}
 
+	function cardShoplist($id, $qtd, $nome,$preco, $marc, $foto){
+		$valorTotal = $preco*$qtd;
+		echo "<div class='content col12 jogo'>
+				<div class='coluna col1'>
+					<h2><b class='title'>Qtd</b></h2>
+					<h2><b class='title'>$qtd</b></h2>";
+					if($qtd > 1){
+						echo "<form method='post' action='shoplist.php'>
+							<p><button class='user' type='submit' name='removerQtd' value='$id'>Remover</button></p>
+						</form>";
+					}
+					echo "<form method='post' action='shoplist.php'>
+						<p><button class='user' type='submit' name='adicionarQtd' value='$id'>Adicionar</button></p>
+					</form>";
+
+				echo "</div>
+
+				<div class='coluna col3'>
+					<img class='home' src='./uploads/produtos/".$foto."'>
+				</div>
+
+				<div class='coluna col4'>
+					<h2><b class='title'>Nome: $nome</b></h2>
+					<h3><p class='title'>Marca: $marc</p></h3>
+					<h3><p class='title'>Marca: $marc</p></h3>
+					<p><b>Valor</b> R$ $preco</p>
+				</div>
+
+				<div class='coluna col4'>
+					<p><b>Valor Total</b> R$ $valorTotal</p>
+					<form method='post' action='shoplist.php'>
+						<p><button class='user' type='submit' name='removerProd' value='$id'>Remover</button></p>
+					</form>
+				</div>
+			</div>
+		";
+	}
+
+	function totalItensShoCar($valorItens, $qtdItens){
+		
+		echo "<div class='content col12 jogo'>
+				<div class='coluna col3'>
+					<h2><b class='title'>Total de itens</b></h2>
+					<p>$qtdItens</p>
+				</div>
+				<div class='coluna col3'>
+					<h2><b class='title'>Valor Total</b></h2>
+					<p>R$ $valorItens</p>
+				</div>
+
+				<div class='coluna col3'>
+					<h2><b class='title'>Parcela</b></h2>
+					<form method='post' action=''>
+						<select>
+							<option>1 x R$ $valorItens</option>";
+							for ($i=0; $i <= 12; $i++) {
+								$parcela = round($valorItens / $i, 3); 
+								echo "<option>$i x R$ $parcela</option>";
+							}
+						echo "</select>
+					</form>
+				</div>
+				<div class='coluna col3'>
+					<h2><b class='title'>Finalizar Compra</b></h2>
+					<form method='post' action='finalizarCompra.php'>
+						<p><button class='user' type='submit' name='finalizarCompra' value=''>Comprar</button></p>
+					</form>
+				</div>
+			</div>
+		";
+	}
+
 	function finalizarCompra(){
 
 		$dados = array();

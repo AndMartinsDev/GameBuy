@@ -42,11 +42,13 @@
 	$teste = (int)2;
 
 	if(isset($_POST['efetuarCompra'])){
-		/*$_SESSION['shopCar'] = array('cliente'=> $clienteId, 'idProduto' => $idProd);*/
-		/*$parcela = $_POST['parcela'];
-		$_SESSION['shopCar'][$idCliente][$prodId] = array('qtd'=> 1, 'nome'=> $prodNome, 'preco'=> $prodPreco, 'parcelas'=> $parcela);*/
+		if(isset($_SESSION['carrinho'][$idCliente][$prodId])){
+			$_SESSION['carrinho'][$idCliente][$prodId]['Quantidade']++;
+		}else{
+			$_SESSION['carrinho'][$idCliente][$prodId] = array('Quantidade'=>1, 'nome'=>$prodNome, 'preco'=> $prodPreco, 'foto' => $prodFoto, 'marc' => $prodMarc);
+		}
 
-		//header('LOCATION: teste.php');
+		header('LOCATION: shoplist.php');
 	}else{
 		$_SESSION['totalitens'] = 0;
 	}
